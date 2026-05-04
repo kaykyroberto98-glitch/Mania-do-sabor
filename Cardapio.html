@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Pizzaria</title>
+</head>
+<body>
+
+<h2>🍕 Pizzaria</h2>
+
+<p>Escolha seu pedido:</p>
+
+<button onclick="enviarPedido()">Enviar pedido</button>
+
+<script>
+function enviarPedido() {
+  var mensagem = "Olá, quero fazer um pedido!";
+  var numero = "5581992563138"; // SEU NÚMERO
+  var link = "https://wa.me/" + numero + "?text=" + encodeURIComponent(mensagem);
+  window.open(link);
+}
+</script>
+
+</body>
+</html>

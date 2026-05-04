@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -7,19 +6,13 @@
 <title>Mania do Sabor</title>
 
 <style>
-body{margin:0;font-family:Arial;background:#f3f3f3}
-.header{background:linear-gradient(135deg,#c1121f,#780000);color:#fff;padding:25px;text-align:center}
-.container{padding:15px;max-width:800px;margin:auto}
-.card{background:#fff;border-radius:18px;padding:15px;margin-bottom:15px;box-shadow:0 3px 12px #0001}
-.item{display:flex;gap:10px;margin-bottom:15px}
-.item img{width:90px;height:90px;border-radius:12px;object-fit:cover}
-.item-info{flex:1}
-.item-info h3{margin:0}
-.item-info p{margin:5px 0;color:#666;font-size:14px}
-.qty{display:flex;align-items:center;gap:5px}
-.qty button{background:#c1121f;color:#fff;border:none;border-radius:8px;padding:5px 10px}
-input,select,textarea{width:100%;padding:10px;margin:5px 0;border-radius:10px;border:1px solid #ccc}
-.finalizar{width:100%;padding:15px;background:#16a34a;color:#fff;border:none;border-radius:12px;font-size:16px}
+body{margin:0;font-family:Arial;background:#f4f4f4}
+.header{background:#c1121f;color:#fff;padding:20px;text-align:center}
+.container{padding:15px;max-width:700px;margin:auto}
+.card{background:#fff;border-radius:15px;padding:15px;margin-bottom:15px}
+.item{border-bottom:1px solid #eee;padding:10px 0}
+button{background:#c1121f;color:#fff;border:none;border-radius:8px;padding:6px 12px;margin-top:5px}
+input,select,textarea{width:100%;padding:10px;margin:5px 0;border-radius:8px;border:1px solid #ccc}
 .total{font-size:18px;font-weight:bold}
 </style>
 </head>
@@ -28,7 +21,7 @@ input,select,textarea{width:100%;padding:10px;margin:5px 0;border-radius:10px;bo
 
 <div class="header">
 <h1>🍕 Mania do Sabor</h1>
-<p>Pedido online via WhatsApp</p>
+<p>Pedido via WhatsApp</p>
 <strong>⏱ 45 minutos</strong>
 </div>
 
@@ -38,63 +31,59 @@ input,select,textarea{width:100%;padding:10px;margin:5px 0;border-radius:10px;bo
 <h2>Pizzas</h2>
 
 <div class="item">
-<img src="https://via.placeholder.com/90">
-<div class="item-info">
-<h3>Mussarela</h3>
-<p>Molho, queijo mussarela, azeitonas e orégano</p>
-<strong>R$30</strong>
-<div class="qty">
-<button onclick="add('Mussarela',30)">+</button>
-</div>
-</div>
+<b>Mussarela</b><br>
+Molho, queijo mussarela, azeitonas e orégano<br>
+R$30<br>
+<button onclick="add('Mussarela',30)">Adicionar</button>
 </div>
 
 <div class="item">
-<img src="https://via.placeholder.com/90">
-<div class="item-info">
-<h3>Calabresa</h3>
-<p>Molho, mussarela, calabresa e orégano</p>
-<strong>R$35</strong>
-<div class="qty">
-<button onclick="add('Calabresa',35)">+</button>
-</div>
-</div>
+<b>Calabresa</b><br>
+Molho, mussarela, calabresa e orégano<br>
+R$35<br>
+<button onclick="add('Calabresa',35)">Adicionar</button>
 </div>
 
 <div class="item">
-<img src="https://via.placeholder.com/90">
-<div class="item-info">
-<h3>Frango c/ Catupiry</h3>
-<p>Molho, mussarela, frango e catupiry</p>
-<strong>R$37</strong>
-<div class="qty">
-<button onclick="add('Frango com Catupiry',37)">+</button>
-</div>
-</div>
+<b>Frango com Catupiry</b><br>
+Molho, mussarela, frango e catupiry<br>
+R$37<br>
+<button onclick="add('Frango com Catupiry',37)">Adicionar</button>
 </div>
 
 <div class="item">
-<img src="https://via.placeholder.com/90">
-<div class="item-info">
-<h3>A moda da casa</h3>
-<p>Mussarela, camarão, carne de sol, calabresa</p>
-<strong>R$50</strong>
-<div class="qty">
-<button onclick="add('A moda da casa',50)">+</button>
-</div>
-</div>
+<b>Mussarela e Presunto</b><br>
+Molho, mussarela, presunto, azeitonas e orégano<br>
+R$32<br>
+<button onclick="add('Mussarela e Presunto',32)">Adicionar</button>
 </div>
 
 <div class="item">
-<img src="https://via.placeholder.com/90">
-<div class="item-info">
-<h3>Clone</h3>
-<p>Pizza especial da casa</p>
-<strong>R$50</strong>
-<div class="qty">
-<button onclick="add('Clone',50)">+</button>
+<b>3x1 Especial</b><br>
+Molho, mussarela, calabresa, camarão e frango com catupiry<br>
+R$48<br>
+<button onclick="add('3x1 Especial',48)">Adicionar</button>
 </div>
+
+<div class="item">
+<b>Camarão com Cream Cheese</b><br>
+Molho, mussarela, camarão, cream cheese, azeitonas e orégano<br>
+R$55<br>
+<button onclick="add('Camarão com Cream Cheese',55)">Adicionar</button>
 </div>
+
+<div class="item">
+<b>A moda da casa</b><br>
+Molho, mussarela, camarão, carne de sol, calabresa e orégano<br>
+R$50<br>
+<button onclick="add('A moda da casa',50)">Adicionar</button>
+</div>
+
+<div class="item">
+<b>Clone</b><br>
+Pizza especial da casa<br>
+R$50<br>
+<button onclick="add('Clone',50)">Adicionar</button>
 </div>
 
 </div>
@@ -103,21 +92,15 @@ input,select,textarea{width:100%;padding:10px;margin:5px 0;border-radius:10px;bo
 <h2>Bebidas</h2>
 
 <div class="item">
-<img src="https://via.placeholder.com/90">
-<div class="item-info">
-<h3>Coca 2L</h3>
-<strong>R$15</strong>
-<button onclick="add('Coca 2L',15)">+</button>
-</div>
+<b>Coca-Cola 2L</b><br>
+R$15<br>
+<button onclick="add('Coca 2L',15)">Adicionar</button>
 </div>
 
 <div class="item">
-<img src="https://via.placeholder.com/90">
-<div class="item-info">
-<h3>Fanta 2L</h3>
-<strong>R$13</strong>
-<button onclick="add('Fanta 2L',13)">+</button>
-</div>
+<b>Fanta 2L</b><br>
+R$13<br>
+<button onclick="add('Fanta 2L',13)">Adicionar</button>
 </div>
 
 </div>
@@ -125,8 +108,17 @@ input,select,textarea{width:100%;padding:10px;margin:5px 0;border-radius:10px;bo
 <div class="card">
 <h2>Carrinho</h2>
 <div id="lista"></div>
-<p class="total">Subtotal: R$ <span id="total">0</span></p>
-<p>Entrega: A combinar conforme localização</p>
+
+<p class="total">Subtotal: R$ <span id="subtotal">0</span></p>
+
+<p>
+Distância (km):
+<input id="km" type="number" placeholder="Ex: 3">
+</p>
+
+<p>Entrega: R$ <span id="entrega">0</span></p>
+<p class="total">Total: R$ <span id="total">0</span></p>
+
 </div>
 
 <div class="card">
@@ -141,14 +133,13 @@ input,select,textarea{width:100%;padding:10px;margin:5px 0;border-radius:10px;bo
 <select id="pagamento">
 <option>Dinheiro</option>
 <option>Pix</option>
-<option>Cartão de crédito</option>
-<option>Cartão de débito</option>
+<option>Cartão</option>
 </select>
 
-<input id="troco" placeholder="Troco para (se dinheiro)">
+<input id="troco" placeholder="Troco para">
 <textarea id="obs" placeholder="Observações"></textarea>
 
-<button class="finalizar" onclick="enviar()">📲 Finalizar Pedido</button>
+<button onclick="enviar()">📲 Enviar Pedido</button>
 
 </div>
 
@@ -167,14 +158,20 @@ carrinho.splice(i,1);
 render();
 }
 
+function calcularEntrega(){
+let km = Number(document.getElementById('km').value);
+let entrega = km > 2 ? 5 : 0;
+document.getElementById('entrega').innerText = entrega;
+return entrega;
+}
+
 function render(){
 let lista = document.getElementById('lista');
-let total = 0;
+let subtotal = 0;
 lista.innerHTML = "";
 
 carrinho.forEach((item,i)=>{
-total += item.preco;
-
+subtotal += item.preco;
 lista.innerHTML += `
 <div>
 ${item.nome} - R$${item.preco}
@@ -182,8 +179,14 @@ ${item.nome} - R$${item.preco}
 </div>`;
 });
 
+let entrega = calcularEntrega();
+let total = subtotal + entrega;
+
+document.getElementById('subtotal').innerText = subtotal;
 document.getElementById('total').innerText = total;
 }
+
+document.getElementById('km').addEventListener('input', render);
 
 function enviar(){
 let nome = document.getElementById('nome').value;
@@ -195,8 +198,11 @@ let pagamento = document.getElementById('pagamento').value;
 let troco = document.getElementById('troco').value;
 let obs = document.getElementById('obs').value;
 
+let subtotal = carrinho.reduce((s,i)=>s+i.preco,0);
+let entrega = calcularEntrega();
+let total = subtotal + entrega;
+
 let itens = carrinho.map(i=>`1x ${i.nome} - R$${i.preco}`).join("\\n");
-let total = carrinho.reduce((s,i)=>s+i.preco,0);
 
 let texto = `🍕 Mania do Sabor 🍕
 
@@ -205,15 +211,15 @@ Contato: ${tel}
 
 ${itens}
 
-Subtotal: R$${total}
-Entrega: A combinar
+Subtotal: R$${subtotal}
+Entrega: R$${entrega}
+Total: R$${total}
 
 Endereço:
 ${rua}, ${numero} - ${bairro}
 
 Pagamento: ${pagamento}
-${pagamento==="Dinheiro" ? "Troco para: R$"+troco : ""}
-${pagamento.includes("Cartão") ? "Obs: taxa da maquineta" : ""}
+${pagamento==="Dinheiro" ? "Troco: R$"+troco : ""}
 
 Obs: ${obs}
 

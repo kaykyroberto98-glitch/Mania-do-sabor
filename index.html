@@ -6,78 +6,80 @@
 <title>Mania do Sabor</title>
 
 <style>
-body{margin:0;font-family:Arial;background:#f4f4f4}
-.header{background:linear-gradient(135deg,#c1121f,#780000);color:#fff;padding:25px;text-align:center}
-.logo{
-width:90px;
-height:90px;
-border-radius:50%;
-background:white;
-color:#c1121f;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:35px;
-font-weight:bold;
-margin:0 auto 10px;
-}
-.container{padding:15px;max-width:700px;margin:auto}
-.card{background:#fff;border-radius:15px;padding:15px;margin-bottom:15px}
-.item{border-bottom:1px solid #eee;padding:10px 0}
-button{background:#c1121f;color:#fff;border:none;border-radius:8px;padding:6px 12px;margin-top:5px}
-input,select,textarea{width:100%;padding:10px;margin:5px 0;border-radius:8px;border:1px solid #ccc}
+body{margin:0;font-family:Arial;background:#f4f4f4;color:#222}
+.header{background:linear-gradient(135deg,#c1121f,#780000);color:#fff;padding:26px 18px;text-align:center;border-radius:0 0 24px 24px}
+.logo{width:88px;height:88px;border-radius:50%;background:white;color:#c1121f;display:flex;align-items:center;justify-content:center;font-size:36px;font-weight:bold;margin:0 auto 10px}
+.container{padding:14px;max-width:760px;margin:auto}
+.card{background:#fff;border-radius:18px;padding:16px;margin-bottom:14px;box-shadow:0 3px 12px #0001}
+.status{padding:12px;border-radius:14px;font-weight:bold;text-align:center;margin-top:12px}
+.aberto{background:#dcfce7;color:#166534}
+.fechado{background:#fee2e2;color:#991b1b}
+.item{display:flex;justify-content:space-between;align-items:center;gap:12px;border-bottom:1px solid #eee;padding:14px 0}
+.item:last-child{border-bottom:none}
+.info{flex:1}
+.info b{font-size:17px}
+.info small{display:block;color:#666;margin:5px 0}
+.preco{font-weight:bold;color:#c1121f}
+button{background:#c1121f;color:#fff;border:none;border-radius:12px;padding:10px 14px;font-weight:bold}
+.btn-add{min-width:95px}
+.btn-remove{background:#555;padding:7px 10px;margin-left:8px}
+input,select,textarea{width:100%;padding:12px;margin:6px 0;border-radius:12px;border:1px solid #ccc;font-size:15px;box-sizing:border-box}
 .total{font-size:18px;font-weight:bold}
+.finalizar{width:100%;background:#16a34a;padding:15px;font-size:17px}
+.finalizar:disabled{background:#999}
+.carrinho-item{display:flex;justify-content:space-between;align-items:center;background:#fafafa;border-radius:12px;padding:10px;margin-bottom:8px}
 </style>
 </head>
 
-<body>
+<body onload="verificarHorario(); render();">
 
 <div class="header">
-<div class="logo">🍕</div>
-<h1>Mania do Sabor</h1>
-<p>Pedido via WhatsApp</p>
-<strong>⏱ 45 minutos</strong>
+  <div class="logo">🍕</div>
+  <h1>Mania do Sabor</h1>
+  <p>Pedido online via WhatsApp</p>
+  <strong>⏱ Previsão: 45 minutos</strong>
+  <div id="statusLoja" class="status"></div>
+  <p style="font-size:14px;margin-bottom:0">Funcionamento: quinta a segunda, das 18h às 00h</p>
 </div>
 
 <div class="container">
 
 <div class="card">
-<h2>Pizzas</h2>
+<h2>🍕 Pizzas</h2>
 
-<div class="item"><b>Mussarela</b><br>Molho, queijo mussarela, azeitonas e orégano<br>R$30<br><button onclick="add('Mussarela',30)">Adicionar</button></div>
-<div class="item"><b>Calabresa</b><br>Molho, mussarela, calabresa e orégano<br>R$35<br><button onclick="add('Calabresa',35)">Adicionar</button></div>
-<div class="item"><b>Frango com Catupiry</b><br>Molho, mussarela, frango e catupiry<br>R$37<br><button onclick="add('Frango com Catupiry',37)">Adicionar</button></div>
-<div class="item"><b>Mussarela e Presunto</b><br>Molho, mussarela, presunto, azeitonas e orégano<br>R$35<br><button onclick="add('Mussarela e Presunto',32)">Adicionar</button></div>
-<div class="item"><b>3x1 Especial</b><br>Molho, mussarela, calabresa, camarão e frango com catupiry<br>R$48<br><button onclick="add('3x1 Especial',48)">Adicionar</button></div>
-<div class="item"><b>Camarão com Cream Cheese</b><br>Molho, mussarela, camarão, cream cheese, azeitonas e orégano<br>R$55<br><button onclick="add('Camarão com Cream Cheese',55)">Adicionar</button></div>
-<div class="item"><b>A moda da casa</b><br>Molho, mussarela, camarão, carne de sol e calabresa<br>R$50<br><button onclick="add('A moda da casa',50)">Adicionar</button></div>
-<div class="item"><b>Clone</b><br>A escolha do cliente<br>R$50<br><button onclick="add('Clone',50)">Adicionar</button></div>
+<div class="item"><div class="info"><b>Mussarela</b><small>Molho, queijo mussarela, azeitonas e orégano</small><span class="preco">R$30</span></div><button class="btn-add" onclick="add('Mussarela',30)">Adicionar</button></div>
 
+<div class="item"><div class="info"><b>Calabresa</b><small>Molho, mussarela, calabresa e orégano</small><span class="preco">R$35</span></div><button class="btn-add" onclick="add('Calabresa',35)">Adicionar</button></div>
+
+<div class="item"><div class="info"><b>Frango com Catupiry</b><small>Molho, mussarela, frango e catupiry</small><span class="preco">R$37</span></div><button class="btn-add" onclick="add('Frango com Catupiry',37)">Adicionar</button></div>
+
+<div class="item"><div class="info"><b>Mussarela e Presunto</b><small>Molho, mussarela, presunto, azeitonas e orégano</small><span class="preco">R$32</span></div><button class="btn-add" onclick="add('Mussarela e Presunto',32)">Adicionar</button></div>
+
+<div class="item"><div class="info"><b>3x1 Especial</b><small>Molho, mussarela, calabresa, camarão e frango com catupiry</small><span class="preco">R$48</span></div><button class="btn-add" onclick="add('3x1 Especial',48)">Adicionar</button></div>
+
+<div class="item"><div class="info"><b>Camarão com Cream Cheese</b><small>Molho, mussarela, camarão, cream cheese, azeitonas e orégano</small><span class="preco">R$55</span></div><button class="btn-add" onclick="add('Camarão com Cream Cheese',55)">Adicionar</button></div>
+
+<div class="item"><div class="info"><b>A moda da casa</b><small>Molho, mussarela, camarão, carne de sol e calabresa</small><span class="preco">R$50</span></div><button class="btn-add" onclick="add('A moda da casa',50)">Adicionar</button></div>
+
+<div class="item"><div class="info"><b>Clone</b><small>Pizza especial da casa</small><span class="preco">R$50</span></div><button class="btn-add" onclick="add('Clone',50)">Adicionar</button></div>
 </div>
 
 <div class="card">
-<h2>Bebidas</h2>
-
-<div class="item"><b>Coca-Cola 2L</b><br>R$15<br><button onclick="add('Coca 2L',15)">Adicionar</button></div>
-<div class="item"><b>Fanta 2L</b><br>R$13<br><button onclick="add('Fanta 2L',13)">Adicionar</button></div>
-
+<h2>🥤 Bebidas</h2>
+<div class="item"><div class="info"><b>Coca-Cola 2L</b><span class="preco">R$15</span></div><button class="btn-add" onclick="add('Coca-Cola 2L',15)">Adicionar</button></div>
+<div class="item"><div class="info"><b>Fanta 2L</b><span class="preco">R$13</span></div><button class="btn-add" onclick="add('Fanta 2L',13)">Adicionar</button></div>
 </div>
 
 <div class="card">
-<h2>Carrinho</h2>
+<h2>🛒 Carrinho</h2>
 <div id="lista"></div>
-
 <p class="total">Subtotal: R$ <span id="subtotal">0</span></p>
-
 <p><b>Entrega:</b> Taxa acima de 2 km: R$ 5,00</p>
-
 <p class="total">Total parcial: R$ <span id="total">0</span></p>
-
 </div>
 
 <div class="card">
-<h2>Dados</h2>
-
+<h2>📍 Dados do cliente</h2>
 <input id="nome" placeholder="Nome">
 <input id="telefone" placeholder="Telefone">
 <input id="rua" placeholder="Rua">
@@ -87,89 +89,145 @@ input,select,textarea{width:100%;padding:10px;margin:5px 0;border-radius:8px;bor
 <select id="pagamento">
 <option>Dinheiro</option>
 <option>Pix</option>
-<option>Cartão</option>
+<option>Cartão de crédito</option>
+<option>Cartão de débito</option>
 </select>
 
-<input id="troco" placeholder="Troco para">
+<input id="troco" placeholder="Troco para quanto?">
 <textarea id="obs" placeholder="Observações"></textarea>
 
-<button onclick="enviar()">📲 Enviar Pedido</button>
-
+<button id="btnEnviar" class="finalizar" onclick="enviar()">📲 Enviar pedido pelo WhatsApp</button>
 </div>
 
 </div>
 
 <script>
 let carrinho = [];
+let lojaAberta = false;
+
+function verificarHorario(){
+  let agora = new Date();
+  let dia = agora.getDay(); 
+  let hora = agora.getHours();
+  let minuto = agora.getMinutes();
+
+  // Domingo=0, Segunda=1, Terça=2, Quarta=3, Quinta=4, Sexta=5, Sábado=6
+  let diaAberto = (dia === 0 || dia === 1 || dia === 4 || dia === 5 || dia === 6);
+  let horarioAberto = (hora >= 18 && hora <= 23);
+
+  lojaAberta = diaAberto && horarioAberto;
+
+  let status = document.getElementById("statusLoja");
+  let botao = document.getElementById("btnEnviar");
+
+  if(lojaAberta){
+    status.innerText = "🟢 Loja aberta para pedidos";
+    status.className = "status aberto";
+    botao.disabled = false;
+    botao.innerText = "📲 Enviar pedido pelo WhatsApp";
+  } else {
+    status.innerText = "🔴 Loja fechada no momento";
+    status.className = "status fechado";
+    botao.disabled = true;
+    botao.innerText = "Loja fechada no momento";
+  }
+}
 
 function add(nome,preco){
-carrinho.push({nome,preco});
-render();
+  carrinho.push({nome,preco});
+  render();
 }
 
 function remover(i){
-carrinho.splice(i,1);
-render();
+  carrinho.splice(i,1);
+  render();
 }
 
 function render(){
-let lista = document.getElementById('lista');
-let subtotal = 0;
-lista.innerHTML = "";
+  let lista = document.getElementById('lista');
+  let subtotal = 0;
+  lista.innerHTML = "";
 
-carrinho.forEach((item,i)=>{
-subtotal += item.preco;
+  carrinho.forEach((item,i)=>{
+    subtotal += item.preco;
+    lista.innerHTML += `
+      <div class="carrinho-item">
+        <span>${item.nome} - R$${item.preco}</span>
+        <button class="btn-remove" onclick="remover(${i})">Remover</button>
+      </div>`;
+  });
 
-lista.innerHTML += `
-<div>
-${item.nome} - R$${item.preco}
-<button onclick="remover(${i})">❌</button>
-</div>`;
-});
-
-document.getElementById('subtotal').innerText = subtotal;
-document.getElementById('total').innerText = subtotal;
+  document.getElementById('subtotal').innerText = subtotal;
+  document.getElementById('total').innerText = subtotal;
 }
 
 function enviar(){
-let nome = document.getElementById('nome').value;
-let tel = document.getElementById('telefone').value;
+  verificarHorario();
 
-let rua = document.getElementById('rua').value;
-let numero = document.getElementById('numero').value;
-let bairro = document.getElementById('bairro').value;
+  if(!lojaAberta){
+    alert("A loja está fechada no momento. Funcionamos de quinta a segunda, das 18h às 00h.");
+    return;
+  }
 
-let pagamento = document.getElementById('pagamento').value;
-let troco = document.getElementById('troco').value;
-let obs = document.getElementById('obs').value;
+  if(carrinho.length === 0){
+    alert("Adicione pelo menos um item ao carrinho.");
+    return;
+  }
 
-let subtotal = carrinho.reduce((s,i)=>s+i.preco,0);
+  let nome = document.getElementById('nome').value;
+  let tel = document.getElementById('telefone').value;
+  let rua = document.getElementById('rua').value;
+  let numero = document.getElementById('numero').value;
+  let bairro = document.getElementById('bairro').value;
+  let pagamento = document.getElementById('pagamento').value;
+  let troco = document.getElementById('troco').value;
+  let obs = document.getElementById('obs').value;
 
-let itens = carrinho.map(i=>`1x ${i.nome} - R$${i.preco}`).join("\\n");
+  let subtotal = carrinho.reduce((s,i)=>s+i.preco,0);
+  let itens = carrinho.map(i=>`1x ${i.nome} - R$${i.preco}`).join("\n");
 
-let texto = `🍕 Mania do Sabor 🍕
+  let pedidoNumero = Math.floor(Math.random() * 90000) + 10000;
+  let data = new Date().toLocaleDateString('pt-BR');
+  let hora = new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
 
-Cliente: ${nome}
-Contato: ${tel}
+  let texto = `🍕 *Mania do Sabor* 🍕
+
+PEDIDO Nº ${pedidoNumero}
+🗓 *REALIZADO EM:* ${data} às ${hora}
+
+*Cliente:* ${nome}
+*Contato:* ${tel}
+
+-------------------------------------
 
 ${itens}
 
-Subtotal: R$${subtotal}
-Entrega: Taxa acima de 2 km: R$ 5,00
-Total parcial: R$${subtotal}
+-------------------------------------
 
-Endereço:
-${rua}, ${numero} - ${bairro}
+*SUBTOTAL:* R$${subtotal}
+*ENTREGA:* Taxa acima de 2 km: R$ 5,00
+*TOTAL PARCIAL:* R$${subtotal}
 
-Pagamento: ${pagamento}
-${pagamento==="Dinheiro" ? "Troco: R$"+troco : ""}
+-------------------------------------
 
-Obs: ${obs}
+*ENDEREÇO DE ENTREGA* 🛵💨
+*RUA:* ${rua}
+*NÚMERO:* ${numero}
+*BAIRRO:* ${bairro}
 
-⏱ Tempo: 45 minutos`;
+-------------------------------------
 
-let link = "https://wa.me/5581992563138?text="+encodeURIComponent(texto);
-window.open(link);
+*FORMA DE PAGAMENTO:* ${pagamento}
+${pagamento==="Dinheiro" ? "*TROCO PARA:* R$ " + troco : ""}
+${pagamento.includes("Cartão") ? "*Obs.:* pagamento no cartão possui acréscimo da maquineta." : ""}
+
+*OBSERVAÇÕES:* ${obs || "Nenhuma"}
+
+✅ *PEDIDO ENVIADO* ✅
+*Previsão de entrega:* 45 minutos`;
+
+  let link = "https://wa.me/5581992563138?text=" + encodeURIComponent(texto);
+  window.open(link);
 }
 </script>
 
